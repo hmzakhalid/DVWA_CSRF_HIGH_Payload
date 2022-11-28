@@ -9,6 +9,7 @@ fetch(theUrl, {
 }).then(function(text) {
     var parser = new DOMParser();
     var doc = parser.parseFromString(text, "text/html");
+    console.log(doc);
     var token = doc.getElementsByName('user_token')[0].value;
     console.log(token);
     var form = new FormData();
